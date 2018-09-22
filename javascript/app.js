@@ -28,7 +28,7 @@ var APIKey = "j4KXPg8Cq6fDDXmcDf6yB1xsCsqJVmc4";
 function api() {
    
     var searchTerm = $(this).text();
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=+" + searchTerm + "&limit=10&api_key=" + APIKey;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=+" + searchTerm + "&limit=10&api_key=" + APIKey;
 
 
     $.ajax({
