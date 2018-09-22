@@ -1,0 +1,21 @@
+.container {
+    background-color: rgb(190, 190, 176);
+}
+
+#first {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    /* border: 3px solid rgb(72, 112, 25); */
+    
+}
+.cryptoHeader {
+    height: 100px;
+    justify-content: center;
+    width: 100%;
+}
+
+#add-gif {
+    background-color: rgb(71, 170, 71);
+    color: white;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giphy Assignment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="first"></div>
+        <header><img class="cryptoHeader" src="images/crypto-header.jpg" alt="logo" /></header>
+        <br>
+        <div class="row">
+            <div class="col-9">
+                <div id="buttonDiv"></div>
+            </div>
+            <div class="col-3">
+
+              
+                <!----------------------this part will take the user input in the form------------------------------------------>
+                <form id="user-input-form">
+                    <label for="superInput">Add a New Gif Button</label>
+                    <input type="text" id="superInput">
+                    <br>
+
+                    <!-- Button triggers new gif to be added -->
+                    <input id="add-gif" type="submit" value="Add a New Gif">
+                </form>
+                <!-------------------------------------------------------------------------------------------------------------->
+            </div>
+        </div>
+        <div id="bitcoinGif"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="javascript/app.js"></script>
+</body>
+
+</html>
