@@ -44,7 +44,8 @@ function api() {
 
         })
     });
-
+//here i attempt to take asnippet from class and make the gif toggle between the still-link & the animated-link
+//BUUUTT.....this part needs fixing!// 
     var state = $(this).attr("data-state");
 
     if (state === "still") {
@@ -55,6 +56,7 @@ function api() {
         $(this).attr("data-state", "still");
       }
 }
+// end of part needs fixing//   
 
 
 $("#add-gif").on("click", function (event) {
@@ -72,5 +74,15 @@ $("#add-gif").on("click", function (event) {
     $("#buttonDiv").append(newUserButton);
 
     api();
+
+    
 });
 
+
+
+
+
+//STILL NEED TO DO
+//i still need to add a rating for each gif
+
+//i would like to be able to clear any visible gifs before loading the next set of gifs
