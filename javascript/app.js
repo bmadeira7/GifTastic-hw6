@@ -13,10 +13,11 @@ for (var i = 0; i < cryptoBrands.length; i++) {
     newButton.addClass("btn")
     newButton.addClass("btn btn-success")
     newButton.addClass("m-1")
+    newButton.attr("data-state", "still")
     $("#buttonDiv").append(newButton);
 }
 
-
+var state = $(newButton).attr("data-state")
 //i need to put this in a document event listener
 
 $(document).on("click", ".btn", api)
@@ -26,7 +27,8 @@ var APIKey = "j4KXPg8Cq6fDDXmcDf6yB1xsCsqJVmc4";
 
 // Here I am building the URL I need to query the database
 function api() {
-   
+    $("#bitcoinGif").empty()
+    $("#ratingID").empty()
     var searchTerm = $(this).text();
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=+" + searchTerm + "&limit=10&api_key=" + APIKey;
 
@@ -36,27 +38,44 @@ function api() {
         method: "GET"
     }).then(function (response) {
         response.data.forEach(function (response) {
+            //variables related to my still image
             var imageURL = response.images.original_still.url;
             var newImage = $('<img src="' + imageURL + '"></img>')
+            // newImage.attr("data-still")
             $("#bitcoinGif").prepend(newImage)
+            // here i make some variables to hold my animated gif ajax response. 
+            var animateURL = response.images.looping.mp4
+            var animateImage = $('<img src="' + animateURL + '"></img>')
+            animateImage.attr("data-animate")
 
-           
 
+            console.log(animateURL)
+            
+            //here i attempt to match a rating to each gif, but they all show up grouped together at the bottom of the ten gifs
+            var gifRating = response.rating
+            
+            $("#ratingID").append("rating:" + gifRating + " ")
+            
+            
+            //here i try to make the data state switch to animate when the newImage var is clicked, spent hours try to rework this to make it work
+            $(newImage).on("click", function () {
+                if (state === "still") {
+                    console.log("its STILL")
+                    $(this).attr("src", $(this).attr("data-animate"));
+                    $(this).attr("data-state", "animate");
+                    $("#bitcoinGif").prepend(animateImage)
+                } else {
+                    console.log(newImage)
+                    $(this).attr("src", $(this).attr("data-still"));
+                    $(this).attr("data-state", "still");
+                   
+                }
+
+            });
         })
     });
-//here i attempt to take asnippet from class and make the gif toggle between the still-link & the animated-link
-//BUUUTT.....this part needs fixing!// 
-    var state = $(this).attr("data-state");
-
-    if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
-      }
 }
-// end of part needs fixing//   
+
 
 
 $("#add-gif").on("click", function (event) {
@@ -73,16 +92,8 @@ $("#add-gif").on("click", function (event) {
 
     $("#buttonDiv").append(newUserButton);
 
-    api();
-
-    
+    // api();
 });
-
-
-
-
-
 //STILL NEED TO DO
-//i still need to add a rating for each gif
+//i still need to *correctly place* rating for each gif
 
-//i would like to be able to clear any visible gifs before loading the next set of gifs
